@@ -51,6 +51,7 @@ import CheckoutStepType from './CheckoutStepType';
 import CheckoutSupport from './CheckoutSupport';
 import mapToCheckoutProps from './mapToCheckoutProps';
 import navigateToOrderConfirmation from './navigateToOrderConfirmation';
+import CheckoutKiwi from './CheckoutKiwi';
 
 const Billing = lazy(() =>
     retry(
@@ -301,12 +302,17 @@ class Checkout extends Component<
         }
 
         return (
-            <div className={classNames('remove-checkout-step-numbers', { 'is-embedded': isEmbedded() })} data-test="checkout-page-container" id="checkout-page-container">
-                <div className="layout optimizedCheckout-contentPrimary">
-                    {this.renderContent()}
-                </div>
-                {errorModal}
+          <div
+            className={classNames('remove-checkout-step-numbers', { 'is-embedded': isEmbedded() })}
+            data-test="checkout-page-container"
+            id="checkout-page-container"
+          >
+            <div className="layout optimizedCheckout-contentPrimary">
+              <CheckoutKiwi />
+              {this.renderContent()}
             </div>
+            {errorModal}
+          </div>
         );
     }
 
